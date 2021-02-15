@@ -226,3 +226,61 @@ DIV.neo_menu_table
     font-size: 9pt;
     font-family: dotum;
 }
+
+.table1{
+  display: table;
+  width: 100%;
+  border: 2px;
+}
+.row{
+  display: table-row;
+}
+.row1{
+  display: table-row;
+
+}
+.row2{
+  display: table-row;
+
+}
+.col1{
+  width: 4%;
+}
+.col2{
+  width: 7%;
+}
+.col3{
+  width: 7%;
+}
+.col4{
+  width: 10%;
+}
+.col5{
+  width: 8%;
+}
+.col6{
+  width: 6%;
+}
+.col7{
+  width: 15%;
+}
+.col8{
+  width: 10%;
+}
+.col9{
+  width: 10%;
+}
+.col10{
+  width: 12%;
+}
+.col11{
+  width: 7%;
+}
+.col12{
+  width: 4%;
+}
+.cell{
+  display: table-cell;
+  padding: 3px;
+  border: 1px solid #DDD;
+}

@@ -5,7 +5,6 @@ export default function customAxios(url, callback) {
         {
             url: '' + url,
             method: 'get',
-            baseURL: 'http://localhost:8888',
             withCredentials: true,
         }
     ).then(function (response) {
