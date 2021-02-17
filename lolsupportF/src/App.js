@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from "axios";
 import GameInfo from './components/GameInfo';
+import SearchBar from './components/SearchBar';
 import { Container } from 'reactstrap';
 // import customAxios from './customAxios';
 
@@ -27,14 +28,16 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.loadGame();
+    /*this.loadGame();*/
   }
+
 
   /**
    * response : {data : [] , status : 200 , ...}
    */
-  loadGame = async () => {
-    await axios.get("http://localhost:8888/ip")
+  loadGame = async (summonerName) => {
+    console.log(summonerName);
+    await axios.get("http://localhost:8888/search?summonerName="+summonerName)
       .then(({ data }) => {
         this.setState({
           loading: true,
@@ -54,7 +57,20 @@ class App extends Component {
     //   //success handling 
 
     // }
+
+    
   };
+
+  state = {
+    summonerName: ''
+  }
+
+  onChange = (e) => {
+    this.setState({
+        summonerName: e.target.value
+    });
+  };
+
 
 
 
@@ -64,6 +80,38 @@ class App extends Component {
 
     return (
       <div className="App">
+      <div>
+      <div className="divStyle">
+        {
+          <SearchBar value2={this.loadGame}
+            value3={this.onChange}
+            value4={this.state.summonerName}
+          />
+        }
+        {/* <div className="div_main">
+          <div id="searchContainer" className="searchContainer">
+            <div className="tipsy_live" tipsy="FOW.KR 로고" id="fow_logo" >
+              <a href="/">
+                <img className="img" alt="FOW.KR LOGO" src={process.env.PUBLIC_URL + '/img/logo2_1280.png'} height="45px"></img>
+              </a>
+            </div>
+            <input className="searchText" type="text" id="field" autoComplete="off"></input>
+            <input className="searchButton" type="submit" id="submit"></input>
+          </div>
+        </div> */}
+      </div>
+      <div className="divStyle2">
+        <div className="neo_menu_center">
+          <div className="neo_menu_table">
+            <a className="neo_menu_cell" href="/">홈</a>
+            <a className="neo_menu_cell" href="/">챔피언</a>
+            <a className="neo_menu_cell" href="/">챔피언통계</a>
+            <a className="neo_menu_cell" href="/">랭킹</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
         <div className="divStyle3">
           <div className="leftSideBar">
 
