@@ -26,19 +26,20 @@ const GameInfo = ({ value }) => (
             {value.win}
         </Col>
         <Col className="col2 cell">
-            {value.participantIndex}
+            <img src={value.myChampion} width="50px"></img>
+            
         </Col>
         <Col className="col3 cell">
-            {value.gameMode}
+            {value.gameQueueType}
         </Col>
         <Col className="col4 cell">
             {value.kills} / {value.deaths} / {value.assists}
         </Col>
         <Col className="col5 cell">
-            {value.participation}
+            {value.participation}%
         </Col>
         <Col className="col6 cell">
-            {value.spell1Id}, {value.spell2Id}
+            <img src={value.spell1Id } width="50px"></img><img src={value.spell2Id} width="50px"></img>
             {/* {(value.array).map(item => (
 
             ))} */}
