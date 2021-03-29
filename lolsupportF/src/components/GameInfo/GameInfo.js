@@ -26,7 +26,7 @@ const GameInfo = ({ value }) => (
             {value.win}
         </Col>
         <Col className="col2 cell">
-            <img src={value.myChampion} width="50px"></img>
+            <img src={value.myChampion.split(",")[0]} width="50px"></img>
             
         </Col>
         <Col className="col3 cell">
@@ -45,15 +45,28 @@ const GameInfo = ({ value }) => (
             ))} */}
         </Col>
         <Col className="col7 cell">
-            {value.spell1Id}, {value.spell2Id}
+            {
+                (value.teamChampionId).map(teamArray => (
+                    (teamArray).map(teamArray2 => (
+                        <img src={teamArray2.split(',')[0]} width="20px" title={teamArray2.split(',')[1]}></img>
+                    ))
+                    
+                ))
+            }            
         </Col>
         <Col className="col8 cell">
-            {value.item0}, {value.item1}
+            <img src={value.item0} width="20px"></img>
+            <img src={value.item1} width="20px"></img>
+            <img src={value.item2} width="20px"></img>
+            <img src={value.item3} width="20px"></img>
+            <img src={value.item4} width="20px"></img>
+            <img src={value.item5} width="20px"></img>
         </Col>
         <Col className="col9 cell">
             {value.championLevel}, {value.goldEarned}, {value.totalMinionsKilled}
         </Col>
         <Col className="col10 cell">
+            {value.gameCreation} <br></br>
             {value.gameDuration}
         </Col>
         <Col className="col11 cell">
