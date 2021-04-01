@@ -25,7 +25,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      GameList: []
+      GameList: [],
+      GameTier: []
     }
   }
 
@@ -41,7 +42,8 @@ class App extends Component {
       .then(({ data }) => {
         this.setState({
           loading: true,
-          GameList: data.games
+          GameList: data.games,
+          GameTier: data.tier
         });
       }).catch(e => {
         console.error(e);
@@ -72,8 +74,8 @@ class App extends Component {
   };
 
   render() {
-    const { GameList } = this.state;
-    console.log(GameList);
+    const { GameList, GameTier } = this.state;
+    console.log(GameTier);
 
     return (
       <div className="App">
@@ -88,6 +90,16 @@ class App extends Component {
           </div>
           <div className="bodyDiv">
             <div className="bodyMainDiv">
+              <div>
+                리그 : {
+                        GameTier.league
+                      }<br></br>
+                등급 : {GameTier.tier} {GameTier.rank}<br></br>
+                리그 포인트 : {GameTier.leaguePoints}<br></br>
+                {GameTier.totalWin*1+GameTier.totalLose*1}전 {GameTier.totalWin}승 {GameTier.totalLose}패 ({(GameTier.totalWin/(GameTier.totalWin*1+GameTier.totalLose*1)*100).toFixed(2)}%)<br></br>
+
+              </div>
+
               <div className="table1">
                 <GameListTop/>
                 {/* </Container> */}
