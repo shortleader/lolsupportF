@@ -90,15 +90,57 @@ class App extends Component {
           </div>
           <div className="bodyDiv">
             <div className="bodyMainDiv">
-              <div>
-                리그 : {
-                        GameTier.league
+              <div style={{float:'left'}}>
+              {(() => {
+                if(GameTier.Sleague === "RANKED_SOLO_5x5") {
+                  return(
+                    <div>
+                      <img src={GameTier.StierImage} width="50px"></img>
+                      리그 : {
+                        GameTier.Sleague
                       }<br></br>
-                등급 : {GameTier.tier} {GameTier.rank}<br></br>
-                리그 포인트 : {GameTier.leaguePoints}<br></br>
-                {GameTier.totalWin*1+GameTier.totalLose*1}전 {GameTier.totalWin}승 {GameTier.totalLose}패 ({(GameTier.totalWin/(GameTier.totalWin*1+GameTier.totalLose*1)*100).toFixed(2)}%)<br></br>
-
+                      등급 : {GameTier.Stier} {GameTier.Srank}<br></br>
+                      리그 포인트 : {GameTier.SleaguePoints}<br></br>
+                      {GameTier.StotalWin*1+GameTier.StotalLose*1}전 {GameTier.StotalWin}승 {GameTier.StotalLose}패 ({(GameTier.StotalWin/(GameTier.StotalWin*1+GameTier.StotalLose*1)*100).toFixed(2)}%)<br></br>
+                    </div>
+                  )
+                }else{
+                  return(
+                    <div>
+                      <img src="/img/Emblem_Unrank.png" width="50px"></img>
+                      리그 : RANKED_SOLO_5x5<br></br>
+                      Unranked
+                    </div>
+                  )
+                }
+              })()}
               </div>
+
+              <div style={{float:'right'}}>
+                {(() => {
+                  if(GameTier.Fleague === "RANKED_FLEX_SR") {
+                    return(
+                      <div>
+                        <img src={GameTier.FtierImage} width="50px"></img>
+                        리그 : {
+                          GameTier.Fleague
+                        }<br></br>
+                        등급 : {GameTier.Ftier} {GameTier.Frank}<br></br>
+                        리그 포인트 : {GameTier.FleaguePoints}<br></br>
+                        {GameTier.FtotalWin*1+GameTier.FtotalLose*1}전 {GameTier.FtotalWin}승 {GameTier.FtotalLose}패 ({(GameTier.FtotalWin/(GameTier.FtotalWin*1+GameTier.FtotalLose*1)*100).toFixed(2)}%)<br></br>
+                      </div>
+                    )
+                  }else{
+                    return(
+                      <div>
+                        <img src="/img/Emblem_Unrank.png" width="50px"></img>
+                        리그 : RANKED_FLEX_SR<br></br>
+                        Unranked
+                      </div>
+                    )
+                  }
+                })()}
+              </div>              
 
               <div className="table1">
                 <GameListTop/>
