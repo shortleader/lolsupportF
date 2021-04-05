@@ -38,7 +38,7 @@ class App extends Component {
    */
   loadGame = async (summonerName) => {
     console.log(summonerName);
-    await axios.get("http://localhost:8888/search?summonerName="+summonerName)
+    await axios.get("http://localhost:8888/search?summonerName=" + summonerName)
       .then(({ data }) => {
         this.setState({
           loading: true,
@@ -60,7 +60,7 @@ class App extends Component {
 
     // }
 
-    
+
   };
 
   state = {
@@ -69,7 +69,7 @@ class App extends Component {
 
   onChange = (e) => {
     this.setState({
-        summonerName: e.target.value
+      summonerName: e.target.value
     });
   };
 
@@ -80,83 +80,87 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar value2={this.loadGame}
-            value3={this.onChange}
-            value4={this.state.summonerName}
+          value3={this.onChange}
+          value4={this.state.summonerName}
+          onSearch={this.loadGame}
         />
-        <TabMenu/>
+        <TabMenu />
         <div className="divStyle3">
           <div className="leftSideBar">
 
           </div>
           <div className="bodyDiv">
             <div className="bodyMainDiv">
-              <div style={{float:'left'}}>
-              {(() => {
-                if(GameTier.Sleague === "RANKED_SOLO_5x5") {
-                  return(
-                    <div>
-                      <img src={GameTier.StierImage} width="50px"></img>
+              <div>
+
+                <div style={{ float: 'left' }}>
+                  {(() => {
+                    if (GameTier.Sleague === "RANKED_SOLO_5x5") {
+                      return (
+                        <div>
+                          <img src={GameTier.StierImage} width="50px"></img>
                       리그 : {
-                        GameTier.Sleague
-                      }<br></br>
+                            GameTier.Sleague
+                          }<br></br>
                       등급 : {GameTier.Stier} {GameTier.Srank}<br></br>
                       리그 포인트 : {GameTier.SleaguePoints}<br></br>
-                      {GameTier.StotalWin*1+GameTier.StotalLose*1}전 {GameTier.StotalWin}승 {GameTier.StotalLose}패 ({(GameTier.StotalWin/(GameTier.StotalWin*1+GameTier.StotalLose*1)*100).toFixed(2)}%)<br></br>
-                    </div>
-                  )
-                }else{
-                  return(
-                    <div>
-                      <img src="/img/Emblem_Unrank.png" width="50px"></img>
+                          {GameTier.StotalWin * 1 + GameTier.StotalLose * 1}전 {GameTier.StotalWin}승 {GameTier.StotalLose}패 ({(GameTier.StotalWin / (GameTier.StotalWin * 1 + GameTier.StotalLose * 1) * 100).toFixed(2)}%)<br></br>
+                        </div>
+                      )
+                    } else {
+                      return (
+                        <div>
+                          <img src="/img/Emblem_Unrank.png" width="50px"></img>
                       리그 : RANKED_SOLO_5x5<br></br>
                       Unranked
-                    </div>
-                  )
-                }
-              })()}
-              </div>
+                        </div>
+                      )
+                    }
+                  })()}
+                </div>
 
-              <div style={{float:'right'}}>
-                {(() => {
-                  if(GameTier.Fleague === "RANKED_FLEX_SR") {
-                    return(
-                      <div>
-                        <img src={GameTier.FtierImage} width="50px"></img>
+                <div style={{ float: 'right' }}>
+                  {(() => {
+                    if (GameTier.Fleague === "RANKED_FLEX_SR") {
+                      return (
+                        <div>
+                          <img src={GameTier.FtierImage} width="50px"></img>
                         리그 : {
-                          GameTier.Fleague
-                        }<br></br>
+                            GameTier.Fleague
+                          }<br></br>
                         등급 : {GameTier.Ftier} {GameTier.Frank}<br></br>
                         리그 포인트 : {GameTier.FleaguePoints}<br></br>
-                        {GameTier.FtotalWin*1+GameTier.FtotalLose*1}전 {GameTier.FtotalWin}승 {GameTier.FtotalLose}패 ({(GameTier.FtotalWin/(GameTier.FtotalWin*1+GameTier.FtotalLose*1)*100).toFixed(2)}%)<br></br>
-                      </div>
-                    )
-                  }else{
-                    return(
-                      <div>
-                        <img src="/img/Emblem_Unrank.png" width="50px"></img>
+                          {GameTier.FtotalWin * 1 + GameTier.FtotalLose * 1}전 {GameTier.FtotalWin}승 {GameTier.FtotalLose}패 ({(GameTier.FtotalWin / (GameTier.FtotalWin * 1 + GameTier.FtotalLose * 1) * 100).toFixed(2)}%)<br></br>
+                        </div>
+                      )
+                    } else {
+                      return (
+                        <div>
+                          <img src="/img/Emblem_Unrank.png" width="50px"></img>
                         리그 : RANKED_FLEX_SR<br></br>
                         Unranked
-                      </div>
-                    )
-                  }
-                })()}
-              </div>              
+                        </div>
+                      )
+                    }
+                  })()}
+                </div>
+              </div>
 
               <div className="table1">
-                <GameListTop/>
+                <GameListTop />
                 {/* </Container> */}
                 {/* <Container fluid={true} > */}
-                  {
-                    (GameList).map(game => (
-                      <GameInfo value={game} />
-                    ))
-                  }
+                {
+                  (GameList).map(game => (
+                    <GameInfo value={game} />
+                  ))
+                }
               </div>
             </div>
           </div>
           <div className="rightSideBar">
           </div>
-          <Copyright/>
+          <Copyright />
         </div>
       </div>
     );
